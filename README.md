@@ -1,14 +1,10 @@
-#Model for KHU Capstone Design 2025-1
+# Model for KHU Capstone Design 2025-1
 
 
 ## MonoDETR: Depth-guided Transformer for Monocular 3D Object Detection
 Official implementation of ['MonoDETR: Depth-guided Transformer for Monocular 3D Object Detection'](https://arxiv.org/pdf/2203.13310.pdf).
 
-The paper has been accepted by **ICCV 2023** 🎉.
 
-## News
-* **[2023-08]** A ***More Stable Version*** 🌟 of MonoDETR on KITTI is now released! 🔥🔥🔥
-* **[2022-04]** The initial code of MonoDETR on KITTI is released
 
 ## Introduction
 MonoDETR is the **first DETR-based model** for monocular 3D detection **without additional depth supervision, anchors or NMS**. We enable the vanilla transformer in DETR to be depth-guided and achieve scene-level geometric perception. In this way, each object estimates its 3D attributes adaptively from the depth-informative regions on the image, not limited by center-around features.
@@ -109,17 +105,26 @@ New and better results in this repo:
     mkdir logs
     ```
  
-5. Download [KITTI](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d) datasets and prepare the directory structure as:
-    ```
-    │MonoDETR/
-    ├──...
-    ├──data/KITTIDataset/
-    │   ├──ImageSets/
-    │   ├──training/
-    │   ├──testing/
-    ├──...
+5. Download [KITTI](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d) datasets 
+
     ```
     You can also change the data path at "dataset/root_dir" in `configs/monodetr.yaml`.
+
+ ```bash
+  data/
+    └── KITTIDataset/
+        ├── ImageSets/         # 이미지 분할 목록 파일들
+        │   ├── train.txt
+        │   ├── val.txt
+        │   ├── test.txt
+        │   └── trainval.txt
+        ├── training/          # 학습 데이터
+        │   ├── image_2/       # 학습용 왼쪽 컬러 이미지
+        │   ├── label_2/       # 학습용 라벨 파일 (객체 위치, 클래스 정보 등)
+        │   └── calib/         # 학습용 calibration 파일
+        └── testing/           # 테스트 데이터 (평가용)
+            └── image_2/       # 테스트용 왼쪽 컬러 이미지
+    ```
     
 ## Get Started
 
